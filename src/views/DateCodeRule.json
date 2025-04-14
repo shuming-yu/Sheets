@@ -1,0 +1,57 @@
+[
+  {
+    "ID": 4,
+    "RuleName": "YYWW",
+    "Color": "orange",
+    "YearRule": null,
+    "YearLength": 12.4654,
+    "Action": true,
+    "RuleDescr": "YYWW(四位數字)",
+    "Editor": "IEC060397",
+    "Cdt": "2017-06-14 13:42:20.000"
+  },
+  {
+    "ID": 5,
+    "RuleName": "(D)YYWW",
+    "Color": null,
+    "YearRule": "https://day.js.org/docs/en/parse/string-format",
+    "YearLength": 2.36,
+    "Action": null,
+    "RuleDescr": "一碼前置開頭，后接四位數字一碼前置開頭，后接四位數字",
+    "Editor": "IEC123456",
+    "Cdt": "2017-06-14 13:42:20.000"
+  },
+  {
+    "ID": 6,
+    "RuleName": "(DD)YYWW",
+    "Color": "red",
+    "YearRule": "",
+    "YearLength": 4577.021,
+    "Action": true,
+    "RuleDescr": "兩碼前置開頭，后接四位數字",
+    "Editor": "admin",
+    "Cdt": "2017-06-14 13:42:20.000"
+  },
+  {
+    "ID": 7,
+    "RuleName": "(10D)YYWW",
+    "Color": null,
+    "YearRule": "https://handsontable.com/docs/12.0/api/",
+    "YearLength": 24567896,
+    "Action": null,
+    "RuleDescr": "以10D開頭，后接四位數字",
+    "Editor": "admin",
+    "Cdt": "2017-06-14 13:42:20.000"
+  },
+  {
+    "ID": 8,
+    "RuleName": "(T)YYWW",
+    "Color": null,
+    "YearRule": null,
+    "YearLength": 7452.7985464,
+    "Action": true,
+    "RuleDescr": "以T開頭，后接四位數字",
+    "Editor": "IEC123456",
+    "Cdt": "2017-06-14 13:42:20.000"
+  }
+]
