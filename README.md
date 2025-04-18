@@ -6,6 +6,20 @@
 
 - [x] Jspreadsheet: https://bossanova.uk/jspreadsheet/docs/getting-started
 
+```sh
+npm init vite Sheets -- --template vue
+npm install --save quasar @quasar/extras
+npm install --save-dev @quasar/vite-plugin sass-embedded@^1.80.2
+
+npm install handsontable @handsontable/vue3
+npm install @jspreadsheet-ce/vue@5
+
+npm install axios
+npm install dayjs
+npm install --save vue-i18n
+npm install --save-dev @intlify/unplugin-vue-i18n
+```
+
 ## 部署 Vite 專案至 GitHub Pages
 
 1. 在 vite.config.js 加入 base
@@ -24,6 +38,6 @@ base: '/Sheets/',
 
 - GitHub Actions 部署(v4版本以上): https://cn.vite.dev/guide/static-deploy#github-pages
 
- - 使用 GitHub Actions 部署到 GitHub Pages: https://tzuhui.io/2020/12/11/Vue/Vue-deploy-github-actions/
+  - 使用 GitHub Actions 部署到 GitHub Pages: https://tzuhui.io/2020/12/11/Vue/Vue-deploy-github-actions/
 
- - GitHub Token: https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+  - GitHub Token: https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens

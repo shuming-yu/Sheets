@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div ref="spreadsheetRef" id="app"></div>
     <div>
       <input type="button" value="Add new row" @click="addRow" />
     </div>
+    <div ref="spreadsheetRef" id="app"></div>
   </div>
 </template>
 
