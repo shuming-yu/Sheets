@@ -12,8 +12,8 @@ import '@quasar/extras/material-icons/material-icons.css'
 // Import Quasar css
 import 'quasar/src/css/index.sass'
 
-import "jsuites/dist/jsuites.css";
-import "jspreadsheet-ce/dist/jspreadsheet.css";
+// import "jsuites/dist/jsuites.css";
+// import "jspreadsheet-ce/dist/jspreadsheet.css";
 import 'handsontable/dist/handsontable.full.css';
 
 import axios from 'axios'

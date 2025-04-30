@@ -18,7 +18,7 @@ let mergedOptions: WorksheetOptions; // 用於 getAllData 方法
 
 
 /**
- * 自動補空資料列的工具
+ * 自動補空資料列
  * @param columns 
  * @param rowCount - 預設空白列
  */
