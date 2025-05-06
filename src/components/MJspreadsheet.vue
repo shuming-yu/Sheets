@@ -1,5 +1,5 @@
 <template>
-  <div ref="spreadsheetRef"></div>
+  <div class="myPrefix" ref="spreadsheetRef"></div>
 </template>
 
 <script setup lang="ts">
@@ -78,7 +78,7 @@ onMounted(() => {
 
       // ✅ 表格呈現
       tableOverflow: true, // 表格是否限制最大尺寸
-      tableHeight: undefined, // 表格高度
+      tableHeight: '400px', // 表格高度
       tableWidth: '800px', // 表格寬度
       textOverflow: false, // 內容是否可超出儲存格
       wordWrap: false, // 啟用文字自動換行

@@ -104,7 +104,7 @@
     </q-card>
 
     <!-- Add / Modify -->
-    <q-dialog v-model="dialogVisible" persistent style="width: 0%;" @show="showDialog">
+    <q-dialog v-model="dialogVisible" persistent @show="showDialog">
       <q-card style="max-width: 90%;">
         <q-card-section class="q-pa-none">
           <q-toolbar class="bg-primary text-white">
@@ -113,10 +113,8 @@
           </q-toolbar>
         </q-card-section>
 
-        <q-card-section class="q-pa-none">
-          <div style="height: 400px; width: 1000px; overflow: auto;">
-            <MJspreadsheet ref="spreadsheetRef" :options="Options" />
-          </div>
+        <q-card-section class="q-pa-none" style="height: 400px;" align="center">
+          <MJspreadsheet ref="spreadsheetRef" :options="Options" />
         </q-card-section>
 
         <q-separator />

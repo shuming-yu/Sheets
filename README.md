@@ -18,6 +18,8 @@ npm install axios
 npm install dayjs
 npm install --save vue-i18n
 npm install --save-dev @intlify/unplugin-vue-i18n
+
+npm install postcss-prefix-selector
 ```
 
 ## 部署 Vite 專案至 GitHub Pages
