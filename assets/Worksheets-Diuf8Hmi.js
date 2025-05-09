@@ -1,0 +1,1 @@
+import{V as n,W as o,a1 as e,X as a}from"./index-KpW1kW7M.js";const s={ref:"spreadsheetRef",id:"app"},p=n({__name:"Worksheets",setup(r){function t(){}return(d,c)=>(a(),o("div",null,[e("div",null,[e("input",{type:"button",value:"Add new row",onClick:t})]),e("div",s,null,512)]))}});export{p as default};
