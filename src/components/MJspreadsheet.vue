@@ -4,22 +4,22 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import jspreadsheet, {type WorksheetInstance, type WorksheetOptions} from 'jspreadsheet-ce';
+import jspreadsheet, {type JspreadsheetInstance, type JSpreadsheetOptions} from 'jspreadsheet-ce';
 import 'jspreadsheet-ce/dist/jspreadsheet.css';
 import 'jsuites/dist/jsuites.css';
 
 // 接收 props
-const props = defineProps<{ options: WorksheetOptions }>();
+const props = defineProps<{ options: JSpreadsheetOptions }>();
 
 // DOM ref
 const spreadsheetRef = ref<HTMLDivElement | null>(null);
-const spreadsheet = ref<WorksheetInstance | null>(null);
-let mergedOptions: WorksheetOptions; // 用於 getAllData 方法
+const spreadsheet = ref<JspreadsheetInstance | null>(null);
+let mergedOptions: JSpreadsheetOptions;
 
 
 /**
  * 自動補空資料列
- * @param columns 
+ * @param columns
  * @param rowCount - 預設空白列
  */
 function generateEmptyRows(columns: any[] = [], rowCount: number = 10) {
@@ -32,16 +32,16 @@ function generateEmptyRows(columns: any[] = [], rowCount: number = 10) {
 // 初始化表格
 onMounted(() => {
   if (spreadsheetRef.value) {
-    const defaultWorksheetOptions: WorksheetOptions = {
+    const defaultWorksheetOptions: JSpreadsheetOptions = {
       // ✅ 基本功能
       allowComments: true, // 允許儲存格備註
-      allowDeleteColumn: true, // 允許刪除欄
+      allowDeleteColumn: false, // 允許刪除欄
       allowDeleteRow: true, // 允許刪除列
       allowDeletingAllRows: false, // 是否允許刪除所有列（預設至少保留一列）
-      allowInsertColumn: true, // 允許插入新欄
+      allowInsertColumn: false, // 允許插入新欄
       allowInsertRow: true, // 允許插入新列
-      allowManualInsertColumn: true, // 最後一欄按 Tab 鍵插入新欄
-      allowManualInsertRow: true, // 最後一列按 Space 鍵插入新列
+      allowManualInsertColumn: false, // 最後一欄按 Tab 鍵插入新欄
+      allowManualInsertRow: false, // 最後一列按 Space 鍵插入新列
       allowRenameColumn: true, // 允許重新命名欄位標題
 
       // ✅ 表格外觀
@@ -72,16 +72,16 @@ onMounted(() => {
       // ✅ 資料匯入匯出
       csvDelimiter: ',', // CSV 分隔符號
       csvFileName: 'jspreadsheet', // 下載檔案名稱
-      csvHeaders: false, // 是否從 CSV 讀取表頭
+      csvHeaders: true, // 是否從 CSV 讀取表頭
       parseTableAutoCellType: false, // 自動判斷欄位型別
       parseTableFirstRowAsHeader: false, // 第一列為標題
 
       // ✅ 表格呈現
       tableOverflow: true, // 表格是否限制最大尺寸
       tableHeight: '400px', // 表格高度
-      tableWidth: '800px', // 表格寬度
+      tableWidth: '1000px', // 表格寬度
       textOverflow: false, // 內容是否可超出儲存格
-      wordWrap: false, // 啟用文字自動換行
+      wordWrap: true, // 啟用文字自動換行
       selectionCopy: true, // 顯示選取區右下角複製按鈕
 
       // ✅ 安全與功能設定
@@ -92,18 +92,18 @@ onMounted(() => {
 
       // ✅ 其他功能欄位（預設空值）
       classes: {}, // 儲存格 class 設定
-      comments: {}, // 儲存格註解
+      // comments: {}, // 儲存格註解
       style: {}, // 儲存格樣式
       footers: undefined, // 頁尾內容
       meta: undefined, // 儲存格 meta 資訊
-      rows: undefined, // 自定 row 設定
+      rows: [], // 自定 row 設定
       columns: [], // 自定欄位設定
       data: [], // 表格資料（初始值）
       url: undefined, // 外部 JSON 來源網址
       csv: undefined, // 外部 CSV 來源網址
       root: undefined, // 自定 root 綁定元素（WebComponent）
-      persistence: false, // 是否啟用持久化
-      plugins: undefined, // 外掛設定
+      // persistence: false, // 是否啟用持久化
+      // plugins: undefined, // 外掛設定
     };
 
     mergedOptions = {
@@ -121,11 +121,15 @@ onMounted(() => {
       mergedOptions.data = generateEmptyRows(mergedOptions.columns);
     }
 
-    const instance = jspreadsheet(spreadsheetRef.value, {
-      worksheets: [mergedOptions], // 必須是 Workbook API 格式
-    });
+    // const instance = jspreadsheet(spreadsheetRef.value, {
+    //   worksheets: [mergedOptions], // 必須是 Workbook API 格式
+    // });
 
-    spreadsheet.value = instance[0]; // 儲存第一個（也是唯一一個）sheet
+    // spreadsheet.value = instance[0]; // 儲存第一個（也是唯一一個）sheet
+
+    const instance = jspreadsheet(spreadsheetRef.value, mergedOptions);
+
+    spreadsheet.value = instance; // 直接儲存 jspreadsheet 實例 (單個 sheet)
   }
 });
 
@@ -137,14 +141,16 @@ function getAllData(): Record<string, any>[] {
 
   const rawData = spreadsheet.value.getData(); // 取得二維陣列資料
   const keys = mergedOptions.columns.map(col => col.name ?? ''); // 取出欄位 name
+  console.log(keys);
+
 
   return rawData.map(row =>
-          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
-          Object.fromEntries(row.map((value, index) => [keys[index], value]))
-        ).filter(row => {
-          // 過濾條件：至少一欄不是空字串
-          return Object.values(row).some(val => val !== '');
-        });
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
+    Object.fromEntries(row.map((value, index) => [keys[index], value]))
+  ).filter(row => {
+    // 過濾條件：至少一欄不是空字串
+    return Object.values(row).some(val => val !== '');
+  });
 }
 
 

@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@handsontable/vue3": "^15.2.0",
-    "@jspreadsheet-ce/vue": "^5.0.1",
     "@quasar/extras": "^1.16.17",
     "axios": "^1.8.4",
     "dayjs": "^1.11.13",
     "handsontable": "^15.2.0",
+    "jspreadsheet-ce": "^4.15.0",
     "jsuites": "^5.9.2",
     "pinia": "^3.0.1",
     "postcss-prefix-selector": "^2.1.1",

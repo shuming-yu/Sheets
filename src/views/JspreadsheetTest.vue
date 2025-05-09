@@ -141,7 +141,7 @@ import { ref, reactive, onMounted } from 'vue';
 //   showSuccessNotify
 // } from "@/utils/webUtil";
 // import { setting } from "@/pages/authorize/ui/assets";
-import { type WorksheetInstance, type WorksheetOptions, type CellValue } from 'jspreadsheet-ce';
+import { type JspreadsheetInstance, type JSpreadsheetOptions, type CellValue } from 'jspreadsheet-ce';
 import MJspreadsheet from "@/components/MJspreadsheet.vue";
 import { useI18n } from "vue-i18n";
 const $q = useQuasar()
@@ -259,11 +259,11 @@ const table = reactive<QTableProps>({
 });
 
 const spreadsheetRef = ref<{
-  sheet: WorksheetInstance | null;
+  sheet: JspreadsheetInstance | null;
   getAllData: () => Record<string, any>[];
 } | null>(null);
 
-const Options = reactive<WorksheetOptions>({
+const Options = reactive<JSpreadsheetOptions>({
   minSpareRows: 100,
   data: [],
   columns: [],

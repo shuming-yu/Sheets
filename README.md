@@ -12,7 +12,8 @@ npm install --save quasar @quasar/extras
 npm install --save-dev @quasar/vite-plugin sass-embedded@^1.80.2
 
 npm install handsontable @handsontable/vue3
-npm install @jspreadsheet-ce/vue@5
+# npm install @jspreadsheet-ce/vue@5
+npm install jspreadsheet-ce@4
 
 npm install axios
 npm install dayjs
